@@ -1,0 +1,24 @@
+{
+  "name": "wandercamp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codewithsalmankhan/WanderCamp.git"
+  },
+  "author": "Salman Khan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/codewithsalmankhan/WanderCamp/issues"
+  },
+  "homepage": "https://github.com/codewithsalmankhan/WanderCamp#readme",
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^4.21.1",
+    "mongoose": "^8.8.3"
+  }
+}
