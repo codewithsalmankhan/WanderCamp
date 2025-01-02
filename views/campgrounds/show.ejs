@@ -36,9 +36,8 @@
                 </div>
 
                 <div class="mb-3">
-                    <label class="form-label" for="reviewBody">Review</label>
-                    <textarea class="form-control" name="review[reviewBody]" id="reviewBody" cols="30" rows="3"
-                        required></textarea>
+                    <label class="form-label" for="body">Review</label>
+                    <textarea class="form-control" name="review[body]" id="body" cols="30" rows="3" required></textarea>
                     <div class="valid-feedback">
                         Looks good!
                     </div>
@@ -46,6 +45,17 @@
 
                 <button class="btn btn-success">Submit</button>
             </form>
+
+            <% for (let review of campground.reviews) { %>
+                <div class="mb-3">
+                    <p>
+                        Rating: <%=review.rating%>
+                    </p>
+                    <p>
+                        Review: <%=review.body%>
+                    </p>
+                </div>
+                <% } %>
 
         </div>
     </div>
