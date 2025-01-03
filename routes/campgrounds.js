@@ -31,18 +31,27 @@ router.get('/new', async (req, res) => {
 router.post('/', validateCampground, catchAsync(async (req, res, next) => {
     const campground = new Campground(req.body.campground);
     await campground.save();
+    req.flash('success', 'Campground is successfully created!');
     res.redirect(`/campgrounds/${campground._id}`);
 }));
 
 //Reading id of each object and rendering it on details page
 router.get('/:id', catchAsync(async (req, res) => {
-    const campground = await (await Campground.findById(req.params.id)).populate('reviews');
+    const campground = await Campground.findById(req.params.id).populate('reviews');
+    if (!campground) {
+        req.flash('error', 'Cannot find the campground');
+        return res.redirect('/campgrounds');
+    }
     res.render('campgrounds/show', { campground });
 }));
 
 //Rendering a form for updating an object
 router.get('/:id/edit', catchAsync(async (req, res) => {
     const campground = await Campground.findById(req.params.id);
+    if (!campground) {
+        req.flash('error', 'Cannot find the campground');
+        return res.redirect('/campgrounds');
+    }
     res.render('campgrounds/edit', { campground });
 }));
 
@@ -50,6 +59,7 @@ router.get('/:id/edit', catchAsync(async (req, res) => {
 router.put('/:id', validateCampground, catchAsync(async (req, res) => {
     const { id } = req.params;
     const campground = await Campground.findByIdAndUpdate(id, { ...req.body.campground });
+    req.flash('success', 'Campground is successfully updated!');
     res.redirect(`/campgrounds/${campground._id}`);
 }));
 
@@ -57,6 +67,7 @@ router.put('/:id', validateCampground, catchAsync(async (req, res) => {
 router.delete('/:id', catchAsync(async (req, res) => {
     const { id } = req.params;
     await Campground.findByIdAndDelete(id);
+    req.flash('success', 'Campground is successfully deleted!');
     res.redirect('/campgrounds');
 }));
 
