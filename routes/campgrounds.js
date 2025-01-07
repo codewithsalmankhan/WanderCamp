@@ -48,7 +48,7 @@ router.get('/:id', isLoggedIn, catchAsync(async (req, res) => {
 }));
 
 //Rendering a form for updating an object
-router.get('/:id/edit', catchAsync(async (req, res) => {
+router.get('/:id/edit', isLoggedIn, catchAsync(async (req, res) => {
     const campground = await Campground.findById(req.params.id);
     if (!campground) {
         req.flash('error', 'Cannot find the campground');
