@@ -28,7 +28,17 @@ const seedDB = async () => {
             title: `${sample(descriptors)} ${sample(places)}`,
             image: `https://picsum.photos/400?random=${Math.random()}`,
             description: 'loremipsum adventure camp testing',
-            price
+            price,
+            images: [
+                {
+                    url: 'https://res.cloudinary.com/dg34y8u9x/image/upload/v1736547463/WanderCamp/xgwzrrrnj8jn3wij79rm.jpg',
+                    filename: 'WanderCamp/xgwzrrrnj8jn3wij79rm',
+                },
+                {
+                    url: 'https://res.cloudinary.com/dg34y8u9x/image/upload/v1736547463/WanderCamp/vr1pv4ehd0nk4dtgvkxw.jpg',
+                    filename: 'WanderCamp/vr1pv4ehd0nk4dtgvkxw',
+                }
+            ]
 
         })
         await camp.save();
