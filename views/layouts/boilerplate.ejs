@@ -11,13 +11,17 @@
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css"
         rel="stylesheet">
+    <link rel="stylesheet" href="/stylesheets/app.css">
+
+    <script src='https://api.mapbox.com/mapbox-gl-js/v3.9.2/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v3.9.2/mapbox-gl.css' rel='stylesheet' />
 
 </head>
 
 <body class="d-flex flex-column vh-100">
     <%- include('../partials/navbar') %>
 
-        <main class="container mt-5">
+        <main class="container">
             <%- include('../partials/flash') %>
                 <%- body %>
         </main>

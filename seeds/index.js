@@ -19,7 +19,7 @@ const sample = array => array[Math.floor(Math.random() * array.length)];
 
 const seedDB = async () => {
     await Campground.deleteMany({});
-    for (let i = 0; i < 50; i++) {
+    for (let i = 0; i < 300; i++) {
         const random1000 = Math.floor(Math.random() * 1000);
         const price = Math.floor(Math.random() * 20) + 10;
         const camp = new Campground({
@@ -29,6 +29,12 @@ const seedDB = async () => {
             image: `https://picsum.photos/400?random=${Math.random()}`,
             description: 'loremipsum adventure camp testing',
             price,
+            geometry: {
+                type: 'Point', coordinates: [
+                    cities[random1000].longitude,
+                    cities[random1000].latitude,
+                ]
+            },
             images: [
                 {
                     url: 'https://res.cloudinary.com/dg34y8u9x/image/upload/v1736547463/WanderCamp/xgwzrrrnj8jn3wij79rm.jpg',

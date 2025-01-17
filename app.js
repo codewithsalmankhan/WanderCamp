@@ -61,7 +61,7 @@ passport.deserializeUser(User.deserializeUser());
 
 //middleware to store flash messages in session
 app.use((req, res, next) => {
-    // console.log(req.session);
+    
     res.locals.currentUser = req.user; //user is added by passport once authenticated
     res.locals.success = req.flash('success');
     res.locals.error = req.flash('error');

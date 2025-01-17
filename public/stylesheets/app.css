@@ -1,0 +1,16 @@
+.full-width-image {
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    margin-top: 0; /* Removes top margin */
+    width: 100vw;
+    overflow: hidden;
+}
+
+.full-width-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
