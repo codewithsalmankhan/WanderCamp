@@ -16,7 +16,7 @@ const LocalStrategy = require('passport-local');
 // const helmet = require('helmet');
 const mongoSanitize = require('express-mongo-sanitize');
 const dbUrl = process.env.DB_URL;
-const dbDev = 'mongodb://127.0.0.1:27017/wander-camp';
+//const dbDev = 'mongodb://127.0.0.1:27017/wander-camp';
 const User = require('./models/user');
 
 const userRoutes = require('./routes/users');
@@ -28,7 +28,7 @@ const MongoDBStore = require('connect-mongo')(session);
 
 const connectDB = async () => {
     try {
-        await mongoose.connect(dbDev, {
+        await mongoose.connect(dbUrl, {
             useNewUrlParser: true,
             useUnifiedTopology: true,
         });
@@ -52,7 +52,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.use(mongoSanitize());
 
 const store = new MongoDBStore({
-    url: dbDev,
+    url: dbUrl,
     secret: 'thisshouldbeawildsecret',
     touchAfter: 24 * 3600
 });
